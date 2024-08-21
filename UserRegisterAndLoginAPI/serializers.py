@@ -25,4 +25,30 @@ class UserLoginSerializer(serializers.ModelSerializer):
     class Meta:
         model=User
         fields=['email', 'password', ]
+        
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=User
+        fields=['id','email','name','created_at','updated_at']
+        
+class UserPassWordChangeSerializer(serializers.ModelSerializer):
+    password=serializers.CharField(max_length=255,
+                                   style={'input_type':'password'},
+                                   write_only=True)
+    password2=serializers.CharField(max_length=255,
+                                style={'input_type':'password2'},
+                                write_only=True)
+    class Meta:
+        model=User
+        fields=['password','password2']
+        
+    def validate(self, attrs):
+        password=attrs.get('password')
+        password2=attrs.get('password2')
+        user=self.context.get('user')
+        if password!=password2:
+            raise serializers.ValidationError("Password <> Password2")
+        user.set_password(password)
+        user.save()
+        return attrs
     
