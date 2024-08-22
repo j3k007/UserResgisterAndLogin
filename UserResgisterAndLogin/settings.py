@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'UserRegisterAndLoginAPI',
     'rest_framework_simplejwt',
-    'searchUser',
 ]
 
 MIDDLEWARE = [
@@ -80,9 +79,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'UserResgisterAndLogin.wsgi.application'
 
-GRAPHENE = {
-    "SCHEMA": "searchUser.schema.schema"
-}
+# GRAPHENE = {
+#     "SCHEMA": "searchUser.schema.schema"
+# }
 
 
 # Database
@@ -146,9 +145,9 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ]
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ]
 }
 
 
