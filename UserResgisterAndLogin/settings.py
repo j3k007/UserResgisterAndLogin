@@ -41,10 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'graphene_django',
     'corsheaders',
     'rest_framework',
     'UserRegisterAndLoginAPI',
     'rest_framework_simplejwt',
+    'searchUser',
 ]
 
 MIDDLEWARE = [
@@ -77,6 +79,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'UserResgisterAndLogin.wsgi.application'
+
+GRAPHENE = {
+    "SCHEMA": "searchUser.schema.schema"
+}
 
 
 # Database
